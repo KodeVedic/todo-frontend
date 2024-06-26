@@ -4,20 +4,20 @@ const App = () => {
  const [todos, setTodos] = useState([]);
  const [text, setText] = useState('');
  useEffect(() => {
- axios.get('http://localhost:5000/todos')
+ axios.get('https://todo-backend-4rv4.onrender.com/todos')
  .then(response => setTodos(response.data))
  .catch(error => console.error('Error fetching data: ', error));
  }, []);
  const addTodo = () => {
  if (text) {
- axios.post('http://localhost:5000/todos', { text })
+ axios.post('https://todo-backend-4rv4.onrender.com/todos', { text })
  .then(response => setTodos([...todos, response.data]))
  .catch(error => console.error('Error adding todo: ', error));
  setText('');
  }
  };
  const deleteTodo = (id) => {
- axios.delete(`http://localhost:5000/todos/${id}`)
+ axios.delete(`https://todo-backend-4rv4.onrender.com/todos/${id}`)
  .then(response => setTodos(todos.filter(todo => todo._id !== id)))
  .catch(error => console.error('Error deleting todo: ', error));
  };
